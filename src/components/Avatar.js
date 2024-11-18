@@ -46,7 +46,7 @@ const Avatar = ({ userId, name, imageUrl, width, height }) => {
                         </div>
                     ) : (
                         <PiUserCircle
-                            size={80}
+                            size={width}
                         />
                     )
                 )
