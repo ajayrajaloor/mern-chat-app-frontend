@@ -27,8 +27,8 @@ const Sidebar = () => {
             <FaUserPlus size={20} />
           </div>
         </div>
-        <div className='flex flex-col items-center gap-2'>
-          <button className='mx-auto mb-5' title={user?.name} onClick={() => setEditUserOpen(true)}>
+        <div className='flex flex-col items-center gap-1'>
+          <button className='mx-auto ' title={user?.name} onClick={() => setEditUserOpen(true)}>
             <Avatar
               width={40}
               height={40}
