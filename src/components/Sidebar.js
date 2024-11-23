@@ -62,10 +62,10 @@ const Sidebar = () => {
     <div className='h-full w-full grid grid-cols-[48px,1fr] bg-white border-r-2'>
       <div className='bg-slate-200 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between'>
         <div>
-          <NavLink className={({ isActive }) => `h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded ${isActive && "bg-slate-200"}`} title='chat'>
+          <NavLink className={({ isActive }) => `h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-300 rounded ${isActive && "bg-slate-200"}`} title='chat'>
             <IoChatbubbleEllipses size={20} />
           </NavLink>
-          <div title='add friend' onClick={() => setOpenSearchUser(true)} className='h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded'>
+          <div title='add friend' onClick={() => setOpenSearchUser(true)} className='h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-300 rounded'>
             <FaUserPlus size={20} />
           </div>
         </div>
@@ -79,7 +79,7 @@ const Sidebar = () => {
               userId={user?._id}
             />
           </button>
-          <button title='logout' className='h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' onClick={handleLogout}>
+          <button title='logout' className='h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-300 rounded' onClick={handleLogout}>
             <span className='-ml-2'>
               <BiLogOut size={20} />
             </span>
