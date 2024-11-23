@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { IoChatbubbleEllipses } from 'react-icons/io5'
 import { FaUserPlus } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { BiLogOut } from "react-icons/bi"
 import Avatar from './Avatar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import EditUserDetails from './EditUserDetails'
 import Divider from './Divider'
 import { FiArrowUpLeft } from 'react-icons/fi'
 import SearchUser from './SearchUser'
 import { FaImage, FaVideo } from 'react-icons/fa'
+import { logout } from '../redux/userSlice'
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user || {})
@@ -17,6 +18,8 @@ const Sidebar = () => {
   const [alluser, setAllUser] = useState([])
   const [openSearchUser, setOpenSearchUser] = useState(false)
   const socketConnection = useSelector(state => state?.user?.socketConnection)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (socketConnection) {
@@ -38,7 +41,7 @@ const Sidebar = () => {
               userDetails: conversationUser?.receiver
             }
           } else {
-            return { 
+            return {
               ...conversationUser,
               userDetails: conversationUser?.sender
             }
@@ -48,6 +51,12 @@ const Sidebar = () => {
       })
     }
   }, [socketConnection, user])
+
+  const handleLogout = () =>{
+    dispatch(logout())
+    navigate('/email')
+    localStorage.clear()
+  }
 
   return (
     <div className='h-full w-full grid grid-cols-[48px,1fr] bg-white'>
@@ -70,7 +79,7 @@ const Sidebar = () => {
               userId={user?._id}
             />
           </button>
-          <button title='logout' className='h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded'>
+          <button title='logout' className='h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' onClick={handleLogout}>
             <span className='-ml-2'>
               <BiLogOut size={20} />
             </span>
@@ -100,7 +109,7 @@ const Sidebar = () => {
           {
             alluser.map((conv, index) => {
               return (
-                <NavLink to={"/"+conv?.userDetails?._id} key={conv?._id} className='flex items-center gap-2 py-3 px-2 border border-transparent hover:border-teal-500 rounded hover:bg-slate-100 cursor-pointer'>
+                <NavLink to={"/" + conv?.userDetails?._id} key={conv?._id} className='flex items-center gap-2 py-3 px-2 border border-transparent hover:border-teal-500 rounded hover:bg-slate-100 cursor-pointer'>
                   <div >
                     <Avatar
                       imageUrl={conv?.userDetails?.profile_pic}
@@ -132,11 +141,16 @@ const Sidebar = () => {
                           )
                         }
                       </div>
-                      <p> {conv?.lastMsg?.text} </p>
+                      <p className='text-ellipsis line-clamp-1'> {conv?.lastMsg?.text} </p>
                     </div>
-                    
+
                   </div>
-                  <p className='text-sx ml-auto flex justify-center items-center h-6 w-6 p-1 bg-teal-700 text-white font-semibold rounded-full'> {conv?.unseenMsg} </p>
+                  {
+                    Boolean(conv?.unseenMsg) && (
+                      <p className='text-sx ml-auto flex justify-center items-center h-6 w-6 p-1 bg-teal-700 text-white font-semibold rounded-full'> {conv?.unseenMsg} </p>
+                    )
+                  }
+
                 </NavLink>
               )
             })
