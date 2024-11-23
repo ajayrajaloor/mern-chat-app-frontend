@@ -59,8 +59,8 @@ const Sidebar = () => {
   }
 
   return (
-    <div className='h-full w-full grid grid-cols-[48px,1fr] bg-white'>
-      <div className='bg-slate-100 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between'>
+    <div className='h-full w-full grid grid-cols-[48px,1fr] bg-white border-r-2'>
+      <div className='bg-slate-200 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between'>
         <div>
           <NavLink className={({ isActive }) => `h-12 w-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded ${isActive && "bg-slate-200"}`} title='chat'>
             <IoChatbubbleEllipses size={20} />
@@ -87,7 +87,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className='w-full'>
+      <div className='w-full '>
         <div className='h-16 flex items-center'>
           <h2 className='text-xl font-bold p-4 text-slate-800'>Message</h2>
         </div>

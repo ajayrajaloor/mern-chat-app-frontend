@@ -23,13 +23,12 @@ const Avatar = ({ userId, name, imageUrl, width, height }) => {
     'bg-red-200',
     'bg-green-200',
     'bg-yellow-200',
-    'bg-gray-200',
     'bg-cyan-200',
     'bg-sky-300',
     'bg-blue-200',
   ];
 
-  const randomNumber = Math.floor(Math.random() * 9);
+  const randomNumber = Math.floor(Math.random() * 8);
 
   const isOnline = onlineUser.includes(userId);
 
