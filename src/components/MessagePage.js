@@ -57,7 +57,7 @@ const MessagePage = () => {
     setMessage(prev => {
       return {
         ...prev,
-        imageUrl: uploadPhoto.url
+        imageUrl: uploadPhoto?.url
       }
     })
   }
@@ -82,7 +82,7 @@ const MessagePage = () => {
     setMessage(prev => {
       return {
         ...prev,
-        videoUrl: uploadVideo.url
+        videoUrl: uploadVideo?.url
       }
     })
   }
@@ -237,7 +237,7 @@ const MessagePage = () => {
 
         {
           loading && (
-            <div className='w-full h-full flex justify-center items-center'>
+            <div className='w-full h-full flex sticky bottom-0 justify-center items-center'>
               <Loading />
             </div>
           )
