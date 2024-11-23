@@ -4,31 +4,35 @@ import Loading from './Loading'
 import UserSearchCard from './UserSearchCard'
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 const SearchUser = ({onClose}) => {
     const [searchUser,setSearchUser] = useState([])
     const [loading,setLoading] = useState(false)
     const [search,setSearch] = useState("")
 
+    // Retrieve the logged-in user's ID from Redux state
+    const loggedInUserId = useSelector(state => state?.user?._id);
 
-    const handleSearchUser = async() =>{
-        const URL = `${process.env.REACT_APP_BACKEND_URL}api/search-user`
+    const fetchUsers = async(searchText) =>{
+        const URL = `${process.env.REACT_APP_BACKEND_URL}api/search-user`;
         try {
             setLoading(true)
             const response = await axios.post(URL,{
-                search : search
+                search : searchText,
+                excludeUserId : loggedInUserId
             })
-            setLoading(false)
-
-            setSearchUser(response.data.data)
-            
+            setSearchUser(response?.data?.data)
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error?.response?.data?.message)
+        } finally {
+            setLoading(false)
         }
     }
+    
 
     useEffect(()=>{
-        handleSearchUser()
+        fetchUsers(search.trim() || '')
     },[search])
 
     console.log(searchUser,'searchuser');

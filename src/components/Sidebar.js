@@ -52,7 +52,7 @@ const Sidebar = () => {
     }
   }, [socketConnection, user])
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     dispatch(logout())
     navigate('/email')
     localStorage.clear()
