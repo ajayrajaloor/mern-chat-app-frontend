@@ -43,7 +43,7 @@ const CheckPasswordPage = () => {
     e.stopPropagation()
 
 
-    const URL = `${process.env.REACT_APP_BACKEND_URL}api/password`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`
 
     try {
       const response = await axios({
@@ -59,7 +59,7 @@ const CheckPasswordPage = () => {
 
       toast.success(response?.data?.message)
 
-      if (response.data.success) {
+      if (response?.data?.success) {
         
         dispatch(setToken(response?.data?.token))
         localStorage.setItem('token',response?.data?.token)

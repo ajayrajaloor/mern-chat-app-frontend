@@ -30,14 +30,14 @@ const CheckEmailPage = () => {
     e.stopPropagation()
 
 
-    const URL = `${process.env.REACT_APP_BACKEND_URL}api/email`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/email`
 
     try {
       const response = await axios.post(URL, data)
 
       toast.success(response?.data?.message)
 
-      if (response.data.success) {
+      if (response?.data?.success) {
         setData({
           email: "",
         })

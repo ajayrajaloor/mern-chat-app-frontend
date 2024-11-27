@@ -53,14 +53,14 @@ const RegisterPage = () => {
     e.stopPropagation()
 
     
-    const URL = `${process.env.REACT_APP_BACKEND_URL}api/register`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/register`
 
     try {
       const response = await axios.post(URL,data)
 
       toast.success(response?.data?.message)
 
-      if(response.data.success){
+      if(response?.data?.success){
         setData({
           name: "",
           email: "",

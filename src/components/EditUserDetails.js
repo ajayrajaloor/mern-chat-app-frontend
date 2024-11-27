@@ -58,7 +58,7 @@ const EditUserDetails = ({onClose,user}) => {
         e.preventDefault()
         e.stopPropagation()
         try {
-            const URL = `${process.env.REACT_APP_BACKEND_URL}api/update-user`
+            const URL = `${process.env.REACT_APP_BACKEND_URL}/api/update-user`
 
             const response = await axios({
                 method : 'post',
@@ -71,7 +71,7 @@ const EditUserDetails = ({onClose,user}) => {
             toast.success(response?.data?.message)
             
             if(response?.data?.success){
-                dispatch(setUser(response.data.data))
+                dispatch(setUser(response?.data?.data))
                 onClose()
             }
          

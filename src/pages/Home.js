@@ -18,15 +18,15 @@ const Home = () => {
 
   const fetchUserDetails = async () =>{
     try {
-    const URL = `${process.env.REACT_APP_BACKEND_URL}api/user-details`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/user-details`
       const response = await axios({
         url : URL,
         withCredentials : true
       })
 
-      dispatch(setUser(response.data.data))
+      dispatch(setUser(response?.data?.data))
 
-      if(response.data.data.logout){
+      if(response?.data?.data?.logout){
         dispatch(logout())
         navigate("/email")
       }
