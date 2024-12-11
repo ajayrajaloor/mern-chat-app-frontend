@@ -53,7 +53,7 @@ const RegisterPage = () => {
     e.stopPropagation()
 
     
-    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/register`
+    const URL = `https://mern-chat-app-server-c31m.onrender.com/api/register`
 
     try {
       const response = await axios.post(URL,data)
