@@ -43,7 +43,7 @@ const CheckPasswordPage = () => {
     e.stopPropagation()
 
 
-    const URL = `https://mern-chat-app-backend-delta.vercel.app/pi/password`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`
 
     try {
       const response = await axios({
