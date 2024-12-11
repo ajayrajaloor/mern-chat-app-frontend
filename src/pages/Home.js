@@ -48,9 +48,14 @@ const Home = () => {
     })
 
     socketConnection.on('onlineUser',(data)=>{
-      console.log(data);
+      console.log("online users",data);
       dispatch(setOnlineUser(data))
-      
+    })
+
+
+    socketConnection.on('online-users-updated',(data)=>{
+      console.log("updated online users",data);
+      dispatch(setOnlineUser(data))
     })
 
     dispatch(setSocketConnection(socketConnection))
@@ -58,7 +63,9 @@ const Home = () => {
     return () => {
       socketConnection.disconnect()
     }
-  },[])
+
+
+  },[dispatch])
 
 
   const basePath = location.pathname === '/'

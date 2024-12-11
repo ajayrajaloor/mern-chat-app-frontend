@@ -11,6 +11,7 @@ import { FiArrowUpLeft } from 'react-icons/fi'
 import SearchUser from './SearchUser'
 import { FaImage, FaVideo } from 'react-icons/fa'
 import { logout } from '../redux/userSlice'
+import axios from 'axios'
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user || {})
@@ -52,12 +53,13 @@ const Sidebar = () => {
     }
   }, [socketConnection, user])
 
-  const handleLogout = () => {
-    dispatch(logout())
-    navigate('/email')
-    localStorage.clear()
-  }
-
+  const handleLogout = async () => {
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    dispatch(logout());
+    localStorage.clear();
+    navigate('/email'); 
+    socketConnection.emit('user-offline', user?._id)
+};
   return (
     <div className='h-full w-full grid grid-cols-[48px,1fr] bg-white border-r-2'>
       <div className='bg-slate-200 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between'>

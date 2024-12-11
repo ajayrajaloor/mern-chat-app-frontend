@@ -51,7 +51,7 @@ const CheckPasswordPage = () => {
         url : URL,
         data : {
           userId : location?.state?._id,
-          password : data.password
+          password : data?.password
         },
         withCredentials : true
       })
@@ -109,7 +109,6 @@ const CheckPasswordPage = () => {
             className='bg-primary text-lg px-4 py-1 hover:bg-secondary rounded font-bold text-white leading-relaxed tracking-wide'
           >Login</button>
         </form>
-        <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-secondary hover:underline font-semibold' >Forgot Password ? </Link></p>
       </div>
     </div>
   )

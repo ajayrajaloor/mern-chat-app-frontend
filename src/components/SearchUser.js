@@ -20,9 +20,12 @@ const SearchUser = ({onClose}) => {
             setLoading(true)
             const response = await axios.post(URL,{
                 search : searchText,
-                excludeUserId : loggedInUserId
             })
-            setSearchUser(response?.data?.data)
+
+            const allUsers = response?.data?.data
+            const filteredUsers = allUsers.filter(user => user?._id !== loggedInUserId)
+
+            setSearchUser(filteredUsers)
         } catch (error) {
             toast.error(error?.response?.data?.message)
         } finally {
@@ -60,7 +63,7 @@ const SearchUser = ({onClose}) => {
             <div className='bg-white mt-2 w-full p-4 rounded'>
                 {/**no user found */}
                 {
-                    searchUser.length === 0 && !loading && (
+                    searchUser?.length === 0 && !loading && (
                         <p className='text-center text-slate-600'>no user found!</p>
                     )
                 }
@@ -71,7 +74,7 @@ const SearchUser = ({onClose}) => {
                 }
 
                 {
-                    searchUser.length !== 0 && !loading && (
+                    searchUser?.length !== 0 && !loading && (
                         searchUser.map((user,index) =>{
                             return(
                                 <UserSearchCard key={user?._id} user={user} onClose={onClose}/>
