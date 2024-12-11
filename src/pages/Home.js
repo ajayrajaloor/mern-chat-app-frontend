@@ -44,7 +44,8 @@ const Home = () => {
     const socketConnection = io('https://mern-chat-app-backend-6ikw.onrender.com',{
       auth :{
         token : localStorage.getItem('token')
-      }
+      },
+      transports : ['websocket', 'polling']
     })
 
     socketConnection.on('onlineUser',(data)=>{
