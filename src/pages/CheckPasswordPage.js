@@ -43,7 +43,7 @@ const CheckPasswordPage = () => {
     e.stopPropagation()
 
 
-    const URL = `https://mern-chat-app-server-c31m.onrender.com/api/password`
+    const URL = `https://mern-chat-app-backend-6ikw.onrender.com/api/password`
 
     try {
       const response = await axios({

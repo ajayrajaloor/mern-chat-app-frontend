@@ -58,7 +58,7 @@ const EditUserDetails = ({onClose,user}) => {
         e.preventDefault()
         e.stopPropagation()
         try {
-            const URL = `https://mern-chat-app-server-c31m.onrender.com/api/update-user`
+            const URL = `https://mern-chat-app-backend-6ikw.onrender.com/api/update-user`
 
             const response = await axios({
                 method : 'post',

@@ -18,7 +18,7 @@ const Home = () => {
 
   const fetchUserDetails = async () =>{
     try {
-    const URL = `https://mern-chat-app-server-c31m.onrender.com/api/user-details`
+    const URL = `https://mern-chat-app-backend-6ikw.onrender.com/api/user-details`
       const response = await axios({
         url : URL,
         withCredentials : true
@@ -41,7 +41,7 @@ const Home = () => {
 
   /**socket connection */
   useEffect(()=>{
-    const socketConnection = io('https://mern-chat-app-server-c31m.onrender.com',{
+    const socketConnection = io('https://mern-chat-app-backend-6ikw.onrender.com',{
       auth :{
         token : localStorage.getItem('token')
       }
