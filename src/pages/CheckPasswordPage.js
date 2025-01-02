@@ -58,8 +58,8 @@ const CheckPasswordPage = () => {
       })
 
 
-      toast.success(response?.data?.message)
       console.log(response.data,"responseeee");
+      toast.success(response?.data?.message)
 
       if (response?.data?.success) {
         
