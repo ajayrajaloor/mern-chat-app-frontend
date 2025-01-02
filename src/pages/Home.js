@@ -46,8 +46,9 @@ const Home = () => {
   
   useEffect(()=>{
     // const socketConnection = io(process.env.REACT_APP_BACKEND_URL,{
+console.log("haiii");
 
-    const socketConnection = io(`wss://mern-chat-app-backend-6ikw.onrender.com/api/user-details`,{
+    const socketConnection = io(`wss://mern-chat-app-backend-6ikw.onrender.com`,{
       auth :{
         token : localStorage.getItem('token')
       },
