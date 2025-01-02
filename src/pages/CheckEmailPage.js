@@ -31,6 +31,7 @@ const CheckEmailPage = () => {
 
 
     const URL = `https://mern-chat-app-backend-6ikw.onrender.com/api/email`
+    // const URL = `${process.env.REACT_APP_BACKEND_URL}/api/email`
 
     try {
       const response = await axios.post(URL, data)
