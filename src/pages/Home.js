@@ -24,6 +24,8 @@ const Home = () => {
         url : URL,
         withCredentials : true
       })
+      console.log(response.data,"dataaa response");
+      
 
       dispatch(setUser(response?.data?.data))
 
