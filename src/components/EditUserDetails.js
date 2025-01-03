@@ -58,7 +58,8 @@ const EditUserDetails = ({onClose,user}) => {
         e.preventDefault()
         e.stopPropagation()
         try {
-            const URL = `${process.env.REACT_APP_BACKEND_URL}/api/update-user`
+            const URL = `https://mern-chat-app-backend-6ikw.onrender.com/api/update-user`
+            // const URL = `${process.env.REACT_APP_BACKEND_URL}/api/update-user`
 
             const response = await axios({
                 method : 'post',

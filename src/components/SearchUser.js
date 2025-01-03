@@ -15,7 +15,8 @@ const SearchUser = ({onClose}) => {
     const loggedInUserId = useSelector(state => state?.user?._id);
 
     const fetchUsers = async(searchText) =>{
-        const URL = `${process.env.REACT_APP_BACKEND_URL}/api/search-user`;
+        const URL = `https://mern-chat-app-backend-6ikw.onrender.com/api/search-user`;
+        // const URL = `${process.env.REACT_APP_BACKEND_URL}/api/search-user`;
         try {
             setLoading(true)
             const response = await axios.post(URL,{

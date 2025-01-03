@@ -38,9 +38,6 @@ const CheckEmailPage = () => {
 
       toast.success(response?.data?.message)
 
-      console.log(response,"email responseeee");
-      
-
       if (response?.data?.success) {
         setData({
           email: "",

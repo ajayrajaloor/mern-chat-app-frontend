@@ -18,8 +18,6 @@ const CheckPasswordPage = () => {
   const location = useLocation()
   const dispatch = useDispatch()
 
-  console.log(location,"location in password");
-  
 
   useEffect(() => {
     if(!location?.state?.name){
@@ -60,7 +58,6 @@ const CheckPasswordPage = () => {
       })
 
 
-      console.log(response,"responseeee");
       toast.success(response?.data?.message)
 
       if (response?.data?.success) {
@@ -71,7 +68,6 @@ const CheckPasswordPage = () => {
         setData({
           password: "",
         })
-
         
         
         navigate('/')
